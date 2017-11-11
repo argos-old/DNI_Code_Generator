@@ -3,7 +3,7 @@
 # DNI Code Generator
 Genera el código OCR del reverso del DNIe y DNI a partir de los datos:
 - Número de serie del soporte (solo en el caso del DNI electrónico)
-- Número de DNI
+- Número de DNI o NIE
 - Fecha de nacimiento
 - Fecha de expiración del documento
 
@@ -41,5 +41,9 @@ print(DNICodeGenerator("12345678A", "991107", "251231"))
 IDESP12345678A8<<<<<<<<<<<<<<<
 9911075M2512314ESP<<<<<<<<<<<4
 ```
+## Mejoras realizadas:
+- Añadido soporte para NIE
+- Cálculo automático de la letra del DNI; es decir, en el campo del número del DNI se puede dar con o sin letra
+- Añadidas funciones de validación para todos los campos computables generando ValueError en caso de no ajustarse al formato correcto.
 
 ## En construcción ...
