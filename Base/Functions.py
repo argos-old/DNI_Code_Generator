@@ -40,73 +40,9 @@ class HashFunctions:
 
     @staticmethod
     def hash_dni(dni_number_int):
-        # TODO: to pass raise exception to StringCheckers class
-        if dni_number_int > 99999999 or dni_number_int < 1:
-            raise ValueError("Invalid value. The value must be an integer between 1 and 9999999")
-
         return "TRWAGMYFPDXBNJZSQVHLCKE"[dni_number_int % 23]
 
     def hash_dni_is_ok(self, full_dni_string):
         lnif = list(full_dni_string)
         letter = lnif.pop(len(full_dni_string) - 1)
-
         return True if self.hash_dni(int("".join(lnif))) is letter else False
-
-
-class StringCheckers:
-    @staticmethod
-    def _check_date_string(value):
-        try:
-            from datetime import datetime
-            datetime.strptime(value, "%y%m%d").strftime("%y%m%d")
-        except ValueError:
-            raise ValueError("String was not recognized as a valid date. It should be 'YYMMDD'", value)
-        else:
-            return value
-
-    @staticmethod
-    def _check_dni_serial_number_string(value):
-        if len(value) == 9:
-            from string import ascii_uppercase
-            lvalue = list(value)
-            for char in lvalue[:3]:
-                if not char.upper() in ascii_uppercase:
-                    lvalue.remove(char)
-            for char in lvalue[3:]:
-                if not char.isdigit():
-                    lvalue.remove(char)
-            if len(lvalue) == 9:
-                return value.upper()
-        raise ValueError("String was not recognized as a valid serial number. "
-                         "It should be 3 ascii letters and 6 digits", value)
-
-    @staticmethod
-    def _check_nif_number(value, letter="", nie=""):
-        if int(value) > (99999999 if nie is "" else 9999999):
-            raise ValueError("Invalid value. The value must be an integer between 1 and 9999999", value)
-        return nie, str(value).zfill(8 if nie is "" else 7), HashFunctions().hash_dni(value) if letter is "" else letter
-
-    def _parser_full_nif_string(self, value):
-        from string import ascii_letters
-        lvalue = list(value)
-        letter = ""
-        nie = ""
-
-        if lvalue[0].isalpha():
-            nie = lvalue.pop(0).upper()
-            if nie not in "XY":
-                raise ValueError("String was not recognized as a valid NIF. "
-                                 "It should start with a digit or, in case of NIE, 'X' or 'Y'", nie)
-
-        if not lvalue[len(lvalue) - 1].isdigit():
-            letter = lvalue.pop(len(value) - 1).upper()
-            if letter not in ascii_letters:
-                raise ValueError("String was not recognized as a valid NIF. "
-                                 "It should end with a digit or a ASCII letter", letter)
-
-        for n in lvalue:
-            if not n.isdigit():
-                raise ValueError("String was not recognized as a valid NIF. "
-                                 "The DNI number should not contain letters inside", n)
-
-        return "".join(self._check_nif_number(int("".join(lvalue)), letter, nie))
