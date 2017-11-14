@@ -16,7 +16,8 @@
 #
 # Iván Rincón 2017
 
-from Base.Functions import *
+from Base.Functions import HashFunctions
+from Base.StringCheckers import StringCheckers
 
 
 class DNIHashGenerator(HashFunctions, StringCheckers):

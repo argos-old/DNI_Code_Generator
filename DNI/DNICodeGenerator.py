@@ -26,8 +26,8 @@ class DNICodeGenerator(DNIHashGenerator):
                  expiration_date_string,
                  sex_string="M",
                  nationality_string="ESP",
-                 country_code_string="ESP",
-                 document_type_string="ID"):
+                 document_type_string="ID",
+                 country_code_string="ESP"):
         DNIHashGenerator.__init__(self,
                                   full_dni_string,
                                   birth_date_string,

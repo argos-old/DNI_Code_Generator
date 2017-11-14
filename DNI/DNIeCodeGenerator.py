@@ -28,8 +28,8 @@ class DNIeCodeGenerator(DNICodeGenerator, DNIeHashGenerator):
                  expiration_date_string,
                  sex_string="M",
                  nationality_string="ESP",
-                 country_code_string="ESP",
-                 document_type_string="ID"):
+                 document_type_string="ID",
+                 country_code_string="ESP"):
         DNIeHashGenerator.__init__(self,
                                    serial_number_string,
                                    full_dni_string,
