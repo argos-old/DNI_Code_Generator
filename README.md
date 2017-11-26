@@ -1,4 +1,5 @@
-## En Construcción ...
+## Deprecated ...
+## Aunque es funcional se migra a MRZ Generator
 
 # DNI Code Generator
 Genera el código OCR del reverso del DNIe y DNI a partir de los datos:
@@ -46,4 +47,5 @@ IDESP12345678A8<<<<<<<<<<<<<<<
 - Cálculo automático de la letra del DNI; es decir, el campo del número del DNI puede darse con o sin letra
 - Añadidas funciones de validación para todos los campos computables, las cuales generan una excepción del tipo ValueError en caso de no ajustarse al formato correcto. El primer argumento de la excepción es una cadena detallando qué campo está mal. El segundo argumento reporta el valor que ha causado el error.
 
-## En construcción ...
+## Deprecated ...
+## Aunque es funcional se migra a MZR Generator
